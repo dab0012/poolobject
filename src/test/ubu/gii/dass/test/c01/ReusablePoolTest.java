@@ -9,6 +9,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import ubu.gii.dass.c01.DuplicatedInstanceException;
+import ubu.gii.dass.c01.NotFreeInstanceException;
+import ubu.gii.dass.c01.Reusable;
 import ubu.gii.dass.c01.ReusablePool;
 
 /**
@@ -19,15 +22,15 @@ import ubu.gii.dass.c01.ReusablePool;
 public class ReusablePoolTest {
 	
 
+	public ReusablePool rp;
+	public Reusable r;
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-		
-		
-		
-		
+		rp = null;
 	}
 
 	/**
@@ -44,7 +47,9 @@ public class ReusablePoolTest {
 	public void testGetInstance() {
 		
 		//Intentamos obtener una instancia del objeto
-		if(ReusablePool.getInstance() == null) 
+		rp = ReusablePool.getInstance();
+		
+		if(rp == null) 
 			fail();
 	}
 
@@ -53,6 +58,13 @@ public class ReusablePoolTest {
 	 */
 	@Test
 	public void testAcquireReusable() {
+		
+		try {
+			r = rp.acquireReusable();
+		} catch (NotFreeInstanceException e) {
+			fail();
+		}
+
 	}
 
 	/**
@@ -60,6 +72,13 @@ public class ReusablePoolTest {
 	 */
 	@Test
 	public void testReleaseReusable() {
+		
+		try {
+			rp.releaseReusable(r);
+		} catch (DuplicatedInstanceException e) {
+			fail();
+		}
+		
 	}
 
 }
