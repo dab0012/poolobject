@@ -10,4 +10,4 @@ Workshop to use good practices in software developmemnt: testing and measurement
 Authors:
 
 - Daniel Alonso Báscones
-- Victor Pascual Rodr
+- Victor Pascual Rodríguez
