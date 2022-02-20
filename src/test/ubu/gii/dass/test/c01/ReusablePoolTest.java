@@ -1,4 +1,3 @@
-
 package ubu.gii.dass.test.c01;
 
 import static org.junit.Assert.assertEquals;
@@ -14,9 +13,11 @@ import ubu.gii.dass.c01.ReusablePool;
 
 /**
  * @author Daniel Alonso
+ * @email dab0012@alu.ubu.es
+ * 
  * @author Victor Pascual
  * 
- *         Test para la clase ReusablePool v.1
+ * Test para la clase ReusablePool v.1
  *
  */
 public class ReusablePoolTest {
@@ -108,7 +109,7 @@ public class ReusablePoolTest {
 			e.printStackTrace();
 		}
 
-		// Forzar liberar un reusaable ya liberado
+		// Forzar liberar un reusable ya liberado
 		try {
 			rp1.releaseReusable(r1);
 		} catch (DuplicatedInstanceException e) {
