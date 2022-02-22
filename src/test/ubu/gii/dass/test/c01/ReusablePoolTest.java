@@ -122,23 +122,17 @@ public class ReusablePoolTest {
 	/**
 	 * Test method for
 	 * {@link ubu.gii.dass.c01.Reusable#util()}.
+	 * @throws NotFreeInstanceException
+	 * @throws DuplicatedInstanceException
 	 */
 	@Test
-	public void testUtil() {
-		try {
-			r1 = rp1.acquireReusable();
-			r2 = rp1.acquireReusable();
-			assertEquals(r1.hashCode() + "  :Uso del objeto Reutilizable", r1.util());
-			assertNotEquals(r1.util(), r2.util());
-			rp1.releaseReusable(r1);
-			rp1.releaseReusable(r2);
-		} catch (NotFreeInstanceException e) {
-			fail();
-			e.printStackTrace();
-		} catch (DuplicatedInstanceException e){
-			fail();
-			e.printStackTrace();
-		}
+	public void testUtil() throws NotFreeInstanceException, DuplicatedInstanceException {
+		r1 = rp1.acquireReusable();
+		r2 = rp1.acquireReusable();
+		assertEquals(r1.hashCode() + "  :Uso del objeto Reutilizable", r1.util());
+		assertNotEquals(r1.util(), r2.util());
+		rp1.releaseReusable(r1);
+		rp1.releaseReusable(r2);
 		
 	}
 }
