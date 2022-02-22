@@ -1,6 +1,7 @@
 package ubu.gii.dass.test.c01;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 import org.junit.After;
@@ -118,4 +119,21 @@ public class ReusablePoolTest {
 		fail();
 	}
 
+	/**
+	 * Test method for
+	 * {@link ubu.gii.dass.c01.Reusable#util()}.
+	 */
+	@Test
+	public void testUtil() {
+		try {
+			r1 = rp1.acquireReusable();
+			r2 = rp1.acquireReusable();
+			assertEquals(r1.hashCode() + "  :Uso del objeto Reutilizable", r1.util());
+			assertNotEquals(r1.util(), r2.util());
+		} catch (NotFreeInstanceException e) {
+			fail();
+		}
+	}
 }
+
+
