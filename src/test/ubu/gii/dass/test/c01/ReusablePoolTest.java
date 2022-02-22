@@ -130,9 +130,16 @@ public class ReusablePoolTest {
 			r2 = rp1.acquireReusable();
 			assertEquals(r1.hashCode() + "  :Uso del objeto Reutilizable", r1.util());
 			assertNotEquals(r1.util(), r2.util());
+			rp1.releaseReusable(r1);
+			rp1.releaseReusable(r2);
 		} catch (NotFreeInstanceException e) {
 			fail();
+			e.printStackTrace();
+		} catch (DuplicatedInstanceException e){
+			fail();
+			e.printStackTrace();
 		}
+		
 	}
 }
 
