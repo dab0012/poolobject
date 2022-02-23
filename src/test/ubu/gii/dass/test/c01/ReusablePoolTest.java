@@ -135,6 +135,42 @@ public class ReusablePoolTest {
 		rp1.releaseReusable(r2);
 		
 	}
+
+	/**
+	 * Test method for
+	 * {@link ubu.gii.dass.c01.NotFreeInstanceException}.
+	 * @throws DuplicatedInstanceException
+	 */
+    @Test
+    public void notFreeInstanceException() throws DuplicatedInstanceException{
+        try{
+            r1 = rp1.acquireReusable();
+            r2 = rp1.acquireReusable();
+            Reusable r3 = rp1.acquireReusable();
+        }catch(NotFreeInstanceException e){
+            rp1.releaseReusable(r1);
+            rp1.releaseReusable(r2);
+            return;
+        }
+        fail();
+    }
+
+	/**
+	 * Test method for
+	 * {@link ubu.gii.dass.c01.DuplicatedInstanceException}.
+	 * @throws NotFreeInstanceException
+	 */
+    @Test
+    public void duplicatedInstanceException() throws NotFreeInstanceException{
+        try{
+            r1 = rp1.acquireReusable();
+            rp1.releaseReusable(r1);
+            rp1.releaseReusable(r1);
+        }catch(DuplicatedInstanceException e){
+            return;
+        }
+        fail();
+    }
 }
 
 
