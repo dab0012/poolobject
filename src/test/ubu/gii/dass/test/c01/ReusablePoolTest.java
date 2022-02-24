@@ -4,8 +4,6 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import ubu.gii.dass.c01.Client;
 import ubu.gii.dass.c01.DuplicatedInstanceException;
 import ubu.gii.dass.c01.NotFreeInstanceException;
 import ubu.gii.dass.c01.Reusable;
@@ -16,8 +14,9 @@ import ubu.gii.dass.c01.ReusablePool;
  * @email dab0012@alu.ubu.es
  * 
  * @author Victor Pascual
+ * @email vpr1004@alu.ubu.es
  * 
- *         Test para la clase ReusablePool v.1
+ * Test para la clase ReusablePool v.1
  *
  */
 public class ReusablePoolTest {
@@ -118,10 +117,10 @@ public class ReusablePoolTest {
 	    reusable2 = rPool1.acquireReusable();
 	    // Producir la excepcion
 	    rPool1.acquireReusable();
+	    fail();
 	} catch (NotFreeInstanceException e) {
 	    rPool1.releaseReusable(reusable1);
 	    rPool1.releaseReusable(reusable2);
-	    assertTrue(true);
 	}
     }
 
@@ -137,8 +136,8 @@ public class ReusablePoolTest {
 	    reusable1 = rPool1.acquireReusable();
 	    rPool1.releaseReusable(reusable1);
 	    rPool1.releaseReusable(reusable1);
+	    fail();
 	} catch (DuplicatedInstanceException e) {
-	    assertTrue(true);
 	}
     }
     
