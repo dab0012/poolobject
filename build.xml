@@ -65,7 +65,7 @@
         </sourcefiles>
       </structure>
       <html destdir="report"/>
-      <xml destfile="report.xml"/>
+      <xml destfile="cobertura.xml"/>
     </jacoco:report>
   </target>
   <target name="dist" depends="compile" description="generate the distribution">
@@ -80,7 +80,8 @@
     <delete dir="${main.build.dir}"/>
     <delete dir="${test.build.dir}"/>
     <delete dir="${dist}"/>
-    <delete dir="report"/>
     <delete file="jacoco.exec"/>
   </target>
+	
+	
 </project>
