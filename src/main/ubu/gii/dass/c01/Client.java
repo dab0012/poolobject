@@ -10,9 +10,6 @@ public class Client {
 		Logger logger = Logger.getLogger("c01");
 
 		pool = ReusablePool.getInstance();
-		pool = ReusablePool.getInstance2();
-
-
 
 		if (true==true) {
 			System.out.println("aa");
