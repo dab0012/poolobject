@@ -53,7 +53,7 @@ public final class ReusablePool{
 	 */
 
 	public void releaseReusable(Reusable r) throws DuplicatedInstanceException {
-		if (reusables.contains(r)==false){
+		if (!reusables.contains(r)){
 			reusables.add(r);
 		}
 		else{
