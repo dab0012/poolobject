@@ -12,17 +12,21 @@ public class Client{
 	  Logger logger = Logger.getLogger("c01");
 	 
 	  
+	  
 	  pool = ReusablePool.getInstance();
+	  pool = ReusablePool.getInstance2();
+
+
+
 	  r1 = pool.acquireReusable();
 	  r2 = pool.acquireReusable();
 	  
 	 
 	  logger.info(r1.util());
 	  logger.info(r2.util());
-	   
-	
-	  	  
+		  	  
 	  pool.releaseReusable(r2);
+
 	  r3= pool.acquireReusable();
 	  
 	  logger.info(r3.util());
