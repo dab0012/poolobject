@@ -28,6 +28,13 @@ public final class ReusablePool{
 			instance = new ReusablePool(2);
 		return instance; 
 	}
+
+	public static ReusablePool getInstance2(){
+		if (instance == null)
+			instance = new ReusablePool(2);
+		return instance; 
+	}
+
 	/**
 	 * Adquire una instancia del Objeto Reusable disponible en el Pool
 	 * @return un objeto reusable disponible en el pool
@@ -37,6 +44,11 @@ public final class ReusablePool{
 	public Reusable acquireReusable() throws NotFreeInstanceException{
 		if (reusables.size()>0){
 			Reusable r=(Reusable)reusables.lastElement();
+			Reusable j=(Reusable)reusables.lastElement();
+
+
+
+			reusables.remove(r);
 			reusables.remove(r);
 			return r;			
 		}
